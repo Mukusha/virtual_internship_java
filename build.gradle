@@ -1,32 +1,37 @@
 buildscript {
-	repositories {
-		mavenCentral()
-	}
+    repositories {
+        mavenCentral()
+    }
 }
 
 subprojects {
 
-	apply plugin: 'java'
-	apply plugin: 'idea'
+    apply plugin: 'java'
+    apply plugin: 'idea'
 
-	version = '0.0.1-SNAPSHOT'
-	sourceCompatibility = JavaVersion.VERSION_21
-	targetCompatibility = JavaVersion.VERSION_21
+    version = '0.0.1-SNAPSHOT'
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 
-	repositories {
-		mavenCentral()
-	}
+    repositories {
+        mavenCentral()
+    }
 
-	compileJava {
-		options.encoding = "UTF-8"
-	}
+    compileJava {
+        options.encoding = "UTF-8"
+    }
 
-	compileTestJava {
-		options.encoding = "UTF-8"
-	}
+    compileTestJava {
+        options.encoding = "UTF-8"
+    }
 
-	test {
-		useJUnitPlatform()
-	}
+    dependencies {
+        implementation('org.springframework.boot:spring-boot-starter-web:3.2.5')
+        testImplementation('org.springframework.boot:spring-boot-starter-test:3.2.5')
+    }
+
+    test {
+        useJUnitPlatform()
+    }
 
 }
