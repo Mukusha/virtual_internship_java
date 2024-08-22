@@ -4,16 +4,23 @@ import org.javaguru.travel.insurance.rest.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.rest.TravelCalculatePremiumResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 class TravelCalculatePremiumServiceImplTest {
-    DateTimeService mockDateTimeService = Mockito.mock(DateTimeService.class);
-    private TravelCalculatePremiumService service;
+    @Mock
+    private DateTimeService mockDateTimeService;
+    @InjectMocks
+    private TravelCalculatePremiumServiceImpl service;
     private TravelCalculatePremiumRequest request;
 
     @BeforeEach
@@ -21,8 +28,7 @@ class TravelCalculatePremiumServiceImplTest {
         request = createRequest();
 
         // метод getDaysBetween всегда будет возвращать ноль
-        Mockito.when(mockDateTimeService.getDaysBetween(request.getAgreementDateFrom(), request.getAgreementDateTo())).thenReturn(0L);
-        service = new TravelCalculatePremiumServiceImpl(mockDateTimeService);
+        when(mockDateTimeService.getDaysBetween(request.getAgreementDateFrom(), request.getAgreementDateTo())).thenReturn(0L);
     }
 
     @Test
