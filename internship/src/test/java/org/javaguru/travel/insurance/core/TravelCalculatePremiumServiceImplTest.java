@@ -12,7 +12,8 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TravelCalculatePremiumServiceImplTest {
-    private TravelCalculatePremiumService service = new TravelCalculatePremiumServiceImpl();
+    private final DateTimeService dateTimeService = new DateTimeService();
+    private final TravelCalculatePremiumService service = new TravelCalculatePremiumServiceImpl(dateTimeService);
 
 
     @Test
