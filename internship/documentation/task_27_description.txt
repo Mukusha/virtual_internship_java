@@ -1,0 +1,13 @@
+**Контекст задачи (краткое описание) **
+Примените Lombok для генерации конструктора
+в классах
+- TravelCalculatePremiumServiceImpl
+- TravelCalculatePremiumController
+без модификатора доступа.
+
+**Что было сделано и как? (краткое описание)**
+аннотация из Lombok:
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
+
+**Сколько потратил времени на выполнение задачи?**
+15 мин
